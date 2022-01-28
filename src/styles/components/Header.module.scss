@@ -1,0 +1,162 @@
+.header {
+  width: 100%;
+  height: 280px;
+  background-color: var(--gray);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  .wrapperOne {
+    width: 100%;
+    height: 104px;
+    max-width: 1120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid #4f4f5b;
+
+    .logo {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        color: var(--box);
+        margin-left: 20px;
+      }
+    }
+
+    .alert {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--box);
+        margin-left: 10px;
+      }
+    }
+
+    .perfil {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      .infoPerfil {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 20px;
+
+        h3 {
+          font-size: 20px;
+          font-weight: 600;
+          color: #fcfdff;
+        }
+
+        a {
+          color: #fcfdff;
+          text-decoration: none;
+          cursor: pointer;
+
+          .linkPerfil {
+            font-size: 14px;
+            font-weight: 400;
+            color: #bfbfcc;
+
+            &:hover {
+              color: var(--orange);
+            }
+          }
+        }
+      }
+
+      .wrapperImage {
+        width: 64px;
+        height: 64px;
+        border-radius: 50%;
+        border: 2.5px solid #f1972c;
+        position: relative;
+
+        .imagePerfil {
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .wrapperTwo {
+    width: 100%;
+    height: 176px;
+    max-width: 1120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 32px;
+
+    .wrapperProjects {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+
+      .projectBox {
+        width: 124px;
+        height: 55px;
+        margin-right: 40px;
+
+        h2 {
+          font-size: 24px;
+          font-weight: 600;
+          color: var(--box);
+        }
+
+        p {
+          font-size: 16px;
+          font-weight: 400;
+        }
+      }
+    }
+
+    .buttonNewJob {
+      width: 260px;
+      height: 56px;
+      border: none;
+      border-radius: 10px;
+      background-color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      div {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: rgba($color: #fcfdff, $alpha: 0.16);
+        h2 {
+          font-size: 24px;
+          font-weight: 500;
+          color: #fcfdff;
+        }
+      }
+      p {
+        font-size: 14px;
+        margin-left: 32px;
+        font-weight: 600;
+        color: #fcfdff;
+      }
+    }
+  }
+}

@@ -1,0 +1,58 @@
+.cardProfile {
+  width: 352px;
+  height: 556px;
+  border-radius: 5px;
+  background-color: #fcfdff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  line-height: 30px;
+
+  .wrapperOne {
+    .wrapperImage {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 2.5px solid #f1972c;
+      position: relative;
+
+      .imagePerfil {
+        border-radius: 50%;
+      }
+    }
+
+    h1 {
+      font-size: 28px;
+      margin-top: 24px;
+      font-weight: 600;
+      color: #5a5a66;
+    }
+  }
+
+  .wrapperTwo {
+    p {
+      font-size: 20px;
+      font-weight: 400;
+
+      span {
+        font-size: 20px;
+        font-weight: 600;
+        color: #5a5a66;
+      }
+    }
+
+    button {
+      width: 199px;
+      height: 50px;
+      margin-top: 24px;
+      border-radius: 5px;
+      background-color: #36b236;
+      border: none;
+      color: #fcfdff;
+      font-weight: 600;
+      font-size: 14px;
+    }
+  }
+}
