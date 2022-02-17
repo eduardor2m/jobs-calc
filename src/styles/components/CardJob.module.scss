@@ -16,6 +16,7 @@
   }
 
   .title {
+    width: 20%;
     font-size: 24px;
     font-weight: 600;
     color: #5a5a66;
@@ -56,6 +57,32 @@
     p {
       font-size: 14px;
       font-weight: 500;
+    }
+  }
+
+  .actions {
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: var(--greenLow);
+      border: 1px solid #e1e3e5;
+
+      &:hover {
+        background-color: var(--green);
+      }
+    }
+
+    button:last-child {
+      background-color: var(--redLow);
+      margin-left: 5px;
+
+      &:hover {
+        background-color: var(--red);
+      }
     }
   }
 

@@ -5,10 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { useJob } from '../hooks/useJob';
+import { useProfile } from '../hooks/useProfile';
 import styles from '../styles/components/Header.module.scss';
 
 export const Header: React.FC = () => {
   const { job } = useJob();
+  const { profile } = useProfile();
   return (
     <header className={styles.header}>
       <div className={styles.wrapperOne}>
@@ -18,11 +20,20 @@ export const Header: React.FC = () => {
         </div>
         <div className={styles.alert}>
           <FiAlertCircle size={24} color="#F1972C" />
-          <p>Você tem 2 horas livres no seu dia</p>
+          <p>
+            Você tem{' '}
+            {job.reduce((acc, cur) => acc + (cur.status === false ? 1 : 0), 0)}{' '}
+            projeto
+            {job.reduce((acc, cur) => acc + (cur.status === false ? 1 : 0), 0) >
+            1
+              ? 's'
+              : ''}{' '}
+            em andamento
+          </p>
         </div>
         <div className={styles.perfil}>
           <div className={styles.infoPerfil}>
-            <h3>Eduardo</h3>
+            <h3>{profile.name ? profile.name : 'Crie um perfil'}</h3>
             <a href="/profile">
               <Link href={'/profile'}>
                 <p className={styles.linkPerfil}>Ver perfil</p>
@@ -31,9 +42,7 @@ export const Header: React.FC = () => {
           </div>
           <div className={styles.wrapperImage}>
             <Image
-              src={
-                'https://i.pinimg.com/originals/99/cf/9f/99cf9ff40f47e1f3faf0f85f78180f4c.jpg'
-              }
+              src={profile.url || '/assets/Simbol.svg'}
               className={styles.imagePerfil}
               layout="fill"
             />

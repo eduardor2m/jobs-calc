@@ -9,10 +9,12 @@ import { useRouter } from 'next/router';
 
 import { HeaderSmall } from '../../components/headerSmall';
 import { useJob } from '../../hooks/useJob';
+import { useProfile } from '../../hooks/useProfile';
 import styles from '../../styles/pages/Edit.module.scss';
 
 const Job: NextPage = () => {
   const { job, editJob } = useJob();
+  const { profile } = useProfile();
   const router = useRouter();
   const id = router.query.id as string;
 
@@ -41,7 +43,7 @@ const Job: NextPage = () => {
       id,
       number: 1,
       title: name.charAt(0).toUpperCase().concat(name.slice(1)),
-      price: (hours * 40).toString(),
+      price: (hours * profile.valueHour).toString(),
       hours,
       hoursDay,
       deadline: Number((hours / hoursDay).toFixed(2)),

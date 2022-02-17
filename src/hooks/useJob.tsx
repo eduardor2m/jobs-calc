@@ -20,6 +20,7 @@ interface JobContextData {
   addJob: (job: Job) => Promise<void>;
   removeJob: (jobId: string) => void;
   editJob: (jobId: string, newJob: Job) => void;
+  changeStatusJob: (jobId: string) => void;
 }
 
 const JobContext = createContext<JobContextData>({} as JobContextData);
@@ -80,6 +81,18 @@ export function JobProvider({ children }: JobProviderProps): JSX.Element {
     }
   };
 
+  const changeStatusJob = (jobId: string) => {
+    try {
+      const newJobs = job.map((job) =>
+        job.id === jobId ? { ...job, status: !job.status } : job
+      );
+      setJob(newJobs);
+      localStorage.setItem(storageKey, JSON.stringify(newJobs));
+    } catch {
+      throw new Error('Erro na edição do produto');
+    }
+  };
+
   return (
     <JobContext.Provider
       value={{
@@ -87,6 +100,7 @@ export function JobProvider({ children }: JobProviderProps): JSX.Element {
         addJob,
         removeJob,
         editJob,
+        changeStatusJob,
       }}
     >
       {children}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { FiTrash, FiEdit3 } from 'react-icons/fi';
+import { FiTrash, FiEdit3, FiRefreshCw, FiCheck } from 'react-icons/fi';
 
 import Link from 'next/link';
 
+import { useJob } from '../hooks/useJob';
 import styles from '../styles/components/CardJob.module.scss';
 import { Modal } from './modal';
 
@@ -19,6 +20,8 @@ type CardJobProps = {
 
 export const CardJob: React.FC<CardJobProps> = ({ data }) => {
   const [modal, setModal] = useState(false);
+
+  const { changeStatusJob } = useJob();
   return (
     <>
       {modal && <Modal changeModal={() => setModal(!modal)} jobId={data.id} />}
@@ -41,11 +44,26 @@ export const CardJob: React.FC<CardJobProps> = ({ data }) => {
         <div
           className={styles.status}
           style={{
-            backgroundColor: data.status ? '#faeceb' : '#e8f8e8',
-            color: data.status ? '#eb3b35' : '#36b336',
+            backgroundColor: data.status ? '#e8f8e8' : '#98c1d9',
+            color: data.status ? '#36b336' : '#3d5a80',
           }}
         >
-          {data.status ? <p>Encerrado</p> : <p>Em andamento</p>}
+          {data.status ? <p>Concluído</p> : <p>Em andamento</p>}
+        </div>
+        <div className={styles.actions}>
+          <button
+            onClick={() => changeStatusJob(data.id)}
+            style={{
+              backgroundColor: data.status ? '#98c1d9' : '#e8f8e8',
+              color: data.status ? '#3d5a80' : '#36b336',
+            }}
+          >
+            {data.status === true ? (
+              <FiRefreshCw color="#3d5a80" size="20px" />
+            ) : (
+              <FiCheck color="#36b336" size="20px" />
+            )}
+          </button>
         </div>
         <div className={styles.wrapperButtons}>
           <Link

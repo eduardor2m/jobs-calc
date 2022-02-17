@@ -4,10 +4,12 @@ import { FiTrash } from 'react-icons/fi';
 import Image from 'next/image';
 
 import { useJob } from '../hooks/useJob';
+import { useProfile } from '../hooks/useProfile';
 import styles from '../styles/components/FormJob.module.scss';
 
 export const FormJob: React.FC = () => {
   const { addJob } = useJob();
+  const { profile } = useProfile();
 
   const [name, setName] = useState('');
   const [money, setMoney] = useState(0);
@@ -17,7 +19,7 @@ export const FormJob: React.FC = () => {
 
   useEffect(() => {
     const calc = () => {
-      return hours * 40;
+      return hours * profile.valueHour;
     };
 
     const days = () => {
@@ -25,18 +27,18 @@ export const FormJob: React.FC = () => {
     };
     setDaysProject(days);
     setMoney(calc);
-  }, [hoursDay, hours, name]);
+  }, [hoursDay, hours, name, profile]);
 
   function handlerAddJob() {
     addJob({
       id: String(Math.random()),
       number: 1,
       title: name.charAt(0).toUpperCase().concat(name.slice(1)),
-      price: money.toString(),
+      price: money.toFixed(2).toString(),
       hours,
       hoursDay,
       deadline: Number(daysProject.toFixed(2)),
-      status: true,
+      status: false,
     });
     setName('');
     setMoney(0);
@@ -95,12 +97,13 @@ export const FormJob: React.FC = () => {
           </div>
         </section>
         <section className={styles.wrapperTwo}>
-          {money ? (
-            <span>{money}</span>
+          {money && profile.valueHour ? (
+            <span>{money.toFixed(2)}</span>
           ) : (
             <p>
               {' '}
-              Preencha os dados ao lado para <br /> ver o valor do projeto
+              Preencha os dados ao lado e crie um perfil <br />
+              para ver o valor do projeto
             </p>
           )}
 
